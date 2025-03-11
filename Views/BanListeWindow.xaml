@@ -8,17 +8,20 @@
 
             <DataGrid ItemsSource="{Binding Banlists}" AutoGenerateColumns="False" Height="200" Margin="0,0,0,10">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
-                    <DataGridTextColumn Header="Nom" Binding="{Binding Nom}" Width="150"/>
-                    <DataGridTextColumn Header="Limitée" Binding="{Binding Limitée}" Width="100"/>
-                    <DataGridTextColumn Header="Interdite" Binding="{Binding Interdite}" Width="100"/>
+                    <DataGridTextColumn Header="ID" Binding="{Binding Id, UpdateSourceTrigger=PropertyChanged}" Width="50"/>
+                    <DataGridTextColumn Header="Nom" Binding="{Binding Nom, UpdateSourceTrigger=PropertyChanged}" Width="150"/>
+                    <DataGridTextColumn Header="Limitée" Binding="{Binding Limitée, UpdateSourceTrigger=PropertyChanged}" Width="100"/>
+                    <DataGridTextColumn Header="Interdite" Binding="{Binding Interdite, UpdateSourceTrigger=PropertyChanged}" Width="100"/>
                 </DataGrid.Columns>
             </DataGrid>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
-                <Button Content="Ajouter" Command="{Binding AddCommand}" Width="80" Margin="5"/>
-                <Button Content="Modifier" Command="{Binding UpdateCommand}" Width="80" Margin="5"/>
-                <Button Content="Supprimer" Command="{Binding DeleteCommand}" Width="80" Margin="5"/>
+                <Button Content="Ajouter" Command="{Binding DataContext.AddBanlistCommand }" Width="80" Margin="5"/>
+                <Button Content="Modifier" Command="{Binding DataContext.UpdateBanlistCommand }" Width="80" Margin="5"/>
+                <Button Content="Supprimer" Command="{Binding DataContext.DeleteBanlistCommand }" Width="80" Margin="5"/>
+                <Button Content="Ban"
+                    Command="{Binding DataContext.AddBanlistCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                    CommandParameter="{Binding}" />
             </StackPanel>
         </StackPanel>
     </Grid>
