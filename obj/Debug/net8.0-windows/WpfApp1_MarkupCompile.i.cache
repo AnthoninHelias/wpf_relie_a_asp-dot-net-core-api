@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\helia\Desktop\perso\dot net eval fin\WpfApp1\App.xaml
-31030178924
+31098532921
 
-8-1023128879
+101417220340
 1981124507420
-BanListeWindow.xaml;CartesWindow.xaml;MainWindow.xaml;
+CartesWindow.xaml;MainWindow.xaml;Views\BanListeWindow.xaml;
 
-True
+False
 

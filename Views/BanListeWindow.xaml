@@ -1,0 +1,25 @@
+﻿<Window x:Class="WpfApp1.BanListeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Banlist Manager" Height="400" Width="600">
+    <Grid>
+        <StackPanel Margin="10">
+            <TextBlock Text="Gestion de la Banlist" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+
+            <DataGrid ItemsSource="{Binding Banlists}" AutoGenerateColumns="False" Height="200" Margin="0,0,0,10">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+                    <DataGridTextColumn Header="Nom" Binding="{Binding Nom}" Width="150"/>
+                    <DataGridTextColumn Header="Limitée" Binding="{Binding Limitée}" Width="100"/>
+                    <DataGridTextColumn Header="Interdite" Binding="{Binding Interdite}" Width="100"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+                <Button Content="Ajouter" Command="{Binding AddCommand}" Width="80" Margin="5"/>
+                <Button Content="Modifier" Command="{Binding UpdateCommand}" Width="80" Margin="5"/>
+                <Button Content="Supprimer" Command="{Binding DeleteCommand}" Width="80" Margin="5"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

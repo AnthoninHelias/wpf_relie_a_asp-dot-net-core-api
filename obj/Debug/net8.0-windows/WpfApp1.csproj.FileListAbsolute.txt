@@ -18,8 +18,8 @@ C:\Users\helia\Desktop\perso\dot net eval fin\WpfApp1\obj\Debug\net8.0-windows\r
 C:\Users\helia\Desktop\perso\dot net eval fin\WpfApp1\obj\Debug\net8.0-windows\WpfApp1.pdb
 C:\Users\helia\Desktop\perso\dot net eval fin\WpfApp1\obj\Debug\net8.0-windows\WpfApp1.genruntimeconfig.cache
 C:\Users\helia\Desktop\perso\dot net eval fin\WpfApp1\obj\Debug\net8.0-windows\ref\WpfApp1.dll
-C:\Users\helia\Desktop\perso\dot net eval fin\WpfApp1\obj\Debug\net8.0-windows\BanListeWindow.g.cs
 C:\Users\helia\Desktop\perso\dot net eval fin\WpfApp1\obj\Debug\net8.0-windows\CartesWindow.g.cs
-C:\Users\helia\Desktop\perso\dot net eval fin\WpfApp1\obj\Debug\net8.0-windows\BanListeWindow.baml
 C:\Users\helia\Desktop\perso\dot net eval fin\WpfApp1\obj\Debug\net8.0-windows\CartesWindow.baml
 C:\Users\helia\Desktop\perso\dot net eval fin\WpfApp1\obj\Debug\net8.0-windows\WpfApp1.sourcelink.json
+C:\Users\helia\Desktop\perso\dot net eval fin\WpfApp1\obj\Debug\net8.0-windows\Views\BanListeWindow.baml
+C:\Users\helia\Desktop\perso\dot net eval fin\WpfApp1\obj\Debug\net8.0-windows\Views\BanListeWindow.g.cs
