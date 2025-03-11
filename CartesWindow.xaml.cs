@@ -1,21 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace WpfApp1
 {
     public partial class CartesWindow : Window
     {
         private readonly HttpClient _httpClient = new HttpClient { BaseAddress = new Uri("http://localhost:5193/api/Carte/") };
-        private List<Carte> _cartes = new List<Carte>();
+        private ObservableCollection<Carte> _cartes = new ObservableCollection<Carte>();
         private Carte _selectedCarte;
 
         public CartesWindow()
         {
             InitializeComponent();
+            CartesDataGrid.SelectionChanged += CartesDataGrid_SelectionChanged;
             ChargerCartes();
         }
 
@@ -23,8 +25,12 @@ namespace WpfApp1
         {
             try
             {
-                _cartes = await _httpClient.GetFromJsonAsync<List<Carte>>("GetCartes");
-                CartesDataGrid.ItemsSource = _cartes;
+                var cartes = await _httpClient.GetFromJsonAsync<ObservableCollection<Carte>>("GetCartes");
+                if (cartes != null)
+                {
+                    _cartes = cartes;
+                    CartesDataGrid.ItemsSource = _cartes;
+                }
             }
             catch (Exception ex)
             {
@@ -34,6 +40,12 @@ namespace WpfApp1
 
         private async void AjouterCarte_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(NomTextBox.Text) || string.IsNullOrWhiteSpace(RaretéTextBox.Text))
+            {
+                MessageBox.Show("Veuillez remplir tous les champs.");
+                return;
+            }
+
             var nouvelleCarte = new Carte
             {
                 Nom = NomTextBox.Text,
@@ -52,9 +64,14 @@ namespace WpfApp1
             }
         }
 
-        private void CartesDataGrid_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void CartesDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            _selectedCarte = (Carte)CartesDataGrid.SelectedItem;
+            _selectedCarte = CartesDataGrid.SelectedItem as Carte;
+            if (_selectedCarte != null)
+            {
+                NomTextBox.Text = _selectedCarte.Nom;
+                RaretéTextBox.Text = _selectedCarte.Rareté;
+            }
         }
 
         private async void ModifierCarte_Click(object sender, RoutedEventArgs e)
@@ -68,17 +85,27 @@ namespace WpfApp1
             _selectedCarte.Nom = NomTextBox.Text;
             _selectedCarte.Rareté = RaretéTextBox.Text;
 
-            var response = await _httpClient.PutAsJsonAsync("UpdateCarte", _selectedCarte);
-            if (response.IsSuccessStatusCode)
+            try
             {
-                MessageBox.Show("Carte modifiée avec succès.");
-                ChargerCartes();
+                var response = await _httpClient.PutAsJsonAsync("UpdateCarte", _selectedCarte); // Sans ID dans l’URL
+
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Carte modifiée avec succès.");
+                    ChargerCartes(); // Rafraîchir la liste
+                }
+                else
+                {
+                    string errorMessage = await response.Content.ReadAsStringAsync();
+                    MessageBox.Show($"Erreur lors de la modification : {errorMessage}");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Erreur lors de la modification de la carte.");
+                MessageBox.Show("Erreur de connexion avec l'API : " + ex.Message);
             }
         }
+
 
         private async void SupprimerCarte_Click(object sender, RoutedEventArgs e)
         {
@@ -92,7 +119,7 @@ namespace WpfApp1
             if (response.IsSuccessStatusCode)
             {
                 MessageBox.Show("Carte supprimée avec succès.");
-                ChargerCartes();
+                _cartes.Remove(_selectedCarte); // Supprimer localement sans recharger toute la liste
             }
             else
             {
