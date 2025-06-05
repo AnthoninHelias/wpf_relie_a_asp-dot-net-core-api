@@ -43,6 +43,10 @@ namespace WpfApp1
                         // Vider les champs après connexion réussie
                         NomUtilisateurTextBox.Text = "";
                         MotDePassePasswordBox.Password = "";
+
+                        // Fermer la MainWindow et cette fenêtre
+                        Application.Current.MainWindow?.Close();
+                        this.Close();
                     }
                     else
                     {
@@ -63,6 +67,10 @@ namespace WpfApp1
 
         private void Annuler_Click(object sender, RoutedEventArgs e)
         {
+            // Créer et afficher une nouvelle MainWindow
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            // Fermer cette fenêtre
             this.Close();
         }
 
