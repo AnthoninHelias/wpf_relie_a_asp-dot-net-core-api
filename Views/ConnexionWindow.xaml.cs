@@ -19,5 +19,6 @@ namespace WpfApp1.Views
                 vm.MotDePasse = ((PasswordBox)sender).Password;
             }
         }
+
     }
 }

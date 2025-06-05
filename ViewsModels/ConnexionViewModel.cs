@@ -26,7 +26,6 @@ namespace WpfApp1.ViewsModels
 
         public ConnexionViewModel()
         {
-            ConnexionCommand = new RelayCommand(async _ => await ConnexionAsync());
         }
 
         private async Task ConnexionAsync()

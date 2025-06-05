@@ -1,5 +1,5 @@
 <!-- Fichier : Views/ConnexionWindow.xaml -->
-<Window x:Class="WpfApp1.Views.ConnexionWindow"
+<Window x:Class="WpfApp1.ConnexionWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="clr-namespace:WpfApp1.ViewsModels"

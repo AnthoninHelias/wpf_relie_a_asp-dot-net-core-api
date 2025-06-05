@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "gPinr3U4AVc=",
+  "dgSpecHash": "/VTtzALXsy0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\helia\\Desktop\\perso\\dot net eval fin\\WpfApp1\\WpfApp1.csproj",
+  "projectFilePath": "C:\\Users\\helia\\Desktop\\WpfApp1\\WpfApp1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\helia\\.nuget\\packages\\commonservicelocator\\2.0.2\\commonservicelocator.2.0.2.nupkg.sha512",
     "C:\\Users\\helia\\.nuget\\packages\\libuv\\1.9.1\\libuv.1.9.1.nupkg.sha512",
@@ -122,7 +122,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Le package 'MvvmLightLibs 5.4.1.1' a été restauré en utilisant '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' au lieu du framework cible du projet 'net8.0-windows7.0'. Ce package n'est peut-être pas totalement compatible avec votre projet.",
+      "message": "Package 'MvvmLightLibs 5.4.1.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0-windows7.0'. This package may not be fully compatible with your project.",
       "libraryId": "MvvmLightLibs",
       "targetGraphs": [
         "net8.0-windows7.0"

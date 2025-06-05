@@ -79,6 +79,38 @@
                     </EventTrigger>
                 </Button.Triggers>
             </Button>
+
+
+
+            
+            <!-- Bouton "Connexion Click" -->
+            <Button Grid.Column="3" Width="200" Height="80" FontSize="26" Content="Connexion" Click="Connexion_Click">
+                <Button.RenderTransform>
+                    <ScaleTransform x:Name="scaleConnexion" ScaleX="1" ScaleY="1"/>
+                </Button.RenderTransform>
+                <Button.Triggers>
+                    <EventTrigger RoutedEvent="Button.MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetName="scaleConnexion" Storyboard.TargetProperty="ScaleX" To="1.5" Duration="0:0:4"/>
+                                <DoubleAnimation Storyboard.TargetName="scaleConnexion" Storyboard.TargetProperty="ScaleY" To="1.5" Duration="0:0:4"/>
+                                <!-- Animation synchronisée du cercle -->
+                                <DoubleAnimation Storyboard.TargetName="animatedCircle" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:4"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="Button.MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetName="scaleConnexion" Storyboard.TargetProperty="ScaleX" To="1" Duration="0:0:1"/>
+                                <DoubleAnimation Storyboard.TargetName="scaleConnexion" Storyboard.TargetProperty="ScaleY" To="1" Duration="0:0:1"/>
+                                <!-- Disparition du cercle -->
+                                <DoubleAnimation Storyboard.TargetName="animatedCircle" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:1"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
         </Grid>
 
         <!-- Zone de contenu pour les pages -->
