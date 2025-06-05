@@ -1,0 +1,40 @@
+<Window x:Class="WpfApp1.ConnexionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Connexion" Height="400" Width="700"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Titre -->
+        <TextBlock Text="Connexion" Grid.Row="0" 
+                   FontSize="24" FontWeight="Bold" 
+                   HorizontalAlignment="Center" 
+                   Margin="10,20,10,20"/>
+
+        <!-- Formulaire de connexion -->
+        <StackPanel Grid.Row="1" Margin="40,20">
+            <TextBlock Text="Nom d'utilisateur:" Margin="0,0,0,5"/>
+            <TextBox x:Name="NomUtilisateurTextBox" Height="30" Margin="0,0,0,15"/>
+            
+            <TextBlock Text="Mot de passe:" Margin="0,0,0,5"/>
+            <PasswordBox x:Name="MotDePassePasswordBox" Height="30" Margin="0,0,0,20"/>
+        </StackPanel>
+
+        <!-- Boutons -->
+        <StackPanel Orientation="Horizontal" Grid.Row="2" 
+                    HorizontalAlignment="Center" Margin="10,0,10,20">
+            <Button Content="Se connecter" Click="SeConnecter_Click" 
+                    Width="100" Height="35" Margin="5"
+                    IsDefault="True"/>
+            <Button Content="Retour" Click="Annuler_Click" 
+                    Width="100" Height="35" Margin="5"
+                    IsCancel="True"/>
+        </StackPanel>
+    </Grid>
+</Window>

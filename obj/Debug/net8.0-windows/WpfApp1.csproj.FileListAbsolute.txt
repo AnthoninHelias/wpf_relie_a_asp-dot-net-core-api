@@ -47,7 +47,6 @@ C:\Users\helia\Desktop\WpfApp1\obj\Debug\net8.0-windows\Views\BanListeWindow.bam
 C:\Users\helia\Desktop\WpfApp1\obj\Debug\net8.0-windows\CartesWindow.g.cs
 C:\Users\helia\Desktop\WpfApp1\obj\Debug\net8.0-windows\MainWindow.g.cs
 C:\Users\helia\Desktop\WpfApp1\obj\Debug\net8.0-windows\Views\BanListeWindow.g.cs
-C:\Users\helia\Desktop\WpfApp1\obj\Debug\net8.0-windows\Views\ConnexionWindow.g.cs
 C:\Users\helia\Desktop\WpfApp1\obj\Debug\net8.0-windows\App.g.cs
 C:\Users\helia\Desktop\WpfApp1\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
 C:\Users\helia\Desktop\WpfApp1\obj\Debug\net8.0-windows\WpfApp1_MarkupCompile.cache
@@ -77,7 +76,6 @@ C:\Users\helia\Desktop\WpfApp1\bin\Debug\net8.0-windows\runtimes\win7-arm\native
 C:\Users\helia\Desktop\WpfApp1\bin\Debug\net8.0-windows\runtimes\win7-x64\native\libuv.dll
 C:\Users\helia\Desktop\WpfApp1\bin\Debug\net8.0-windows\runtimes\win7-x86\native\libuv.dll
 C:\Users\helia\Desktop\WpfApp1\obj\Debug\net8.0-windows\MainWindow.baml
-C:\Users\helia\Desktop\WpfApp1\obj\Debug\net8.0-windows\Views\ConnexionWindow.baml
 C:\Users\helia\Desktop\WpfApp1\obj\Debug\net8.0-windows\WpfApp1.g.resources
 C:\Users\helia\Desktop\WpfApp1\obj\Debug\net8.0-windows\WpfApp1.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\helia\Desktop\WpfApp1\obj\Debug\net8.0-windows\WpfApp1.AssemblyInfoInputs.cache
@@ -87,3 +85,5 @@ C:\Users\helia\Desktop\WpfApp1\obj\Debug\net8.0-windows\WpfApp1.sourcelink.json
 C:\Users\helia\Desktop\WpfApp1\obj\Debug\net8.0-windows\WpfApp1.csproj.Up2Date
 C:\Users\helia\Desktop\WpfApp1\obj\Debug\net8.0-windows\WpfApp1.genruntimeconfig.cache
 C:\Users\helia\Desktop\WpfApp1\obj\Debug\net8.0-windows\ref\WpfApp1.dll
+C:\Users\helia\Desktop\WpfApp1\obj\Debug\net8.0-windows\ConnexionWindow.baml
+C:\Users\helia\Desktop\WpfApp1\obj\Debug\net8.0-windows\ConnexionWindow.g.cs

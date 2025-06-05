@@ -80,11 +80,8 @@
                 </Button.Triggers>
             </Button>
 
-
-
-            
-            <!-- Bouton "Connexion Click" -->
-            <Button Grid.Column="3" Width="200" Height="80" FontSize="26" Content="Connexion" Click="Connexion_Click">
+                    <!-- Bouton "Connexion" -->
+            <Button Grid.Column="5" Width="200" Height="80" FontSize="26" Content="Connexion" Click="Connexion_Click">
                 <Button.RenderTransform>
                     <ScaleTransform x:Name="scaleConnexion" ScaleX="1" ScaleY="1"/>
                 </Button.RenderTransform>
@@ -111,6 +108,8 @@
                     </EventTrigger>
                 </Button.Triggers>
             </Button>
+
+            
         </Grid>
 
         <!-- Zone de contenu pour les pages -->

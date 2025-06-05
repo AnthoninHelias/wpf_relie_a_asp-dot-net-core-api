@@ -1,4 +1,3 @@
-// Fichier : ViewsModels/ConnexionViewModel.cs
 using System;
 using System.ComponentModel;
 using System.Net.Http;
@@ -20,55 +19,93 @@ namespace WpfApp1.ViewsModels
             set { _nom = value; OnPropertyChanged(); }
         }
 
-        public string MotDePasse { get; set; }
+        private string _motDePasse;
+        public string MotDePasse
+        {
+            get => _motDePasse;
+            set { _motDePasse = value; OnPropertyChanged(); }
+        }
 
         public ICommand ConnexionCommand { get; }
 
         public ConnexionViewModel()
         {
+            ConnexionCommand = new RelayCommand(async () => await ConnexionAsync());
         }
 
         private async Task ConnexionAsync()
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(Nom) || string.IsNullOrWhiteSpace(MotDePasse))
+                {
+                    MessageBox.Show("Veuillez remplir tous les champs.");
+                    return;
+                }
+
                 var utilisateur = new Utilisateur
                 {
-                    Nom = this.Nom,
-                    MotDePasse = this.MotDePasse
+                    nom = this.Nom,
+                    motDePasse = this.MotDePasse
                 };
 
                 using var client = new HttpClient();
-                client.BaseAddress = new Uri("http://localhost:5000"); // <-- Change l'URL si besoin
+                client.BaseAddress = new Uri("http://localhost:5193/api/Auth/");
 
-                var response = await client.PostAsJsonAsync("/VerifyUtilisateur", utilisateur);
+                var response = await client.PostAsJsonAsync("Login", utilisateur);
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var isValid = await response.Content.ReadFromJsonAsync<bool>();
-
-                    if (isValid)
-                    {
-                        MessageBox.Show("✅ Connexion réussie !", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("❌ Nom ou mot de passe incorrect.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    }
+                    MessageBox.Show("Connected", "Connexion", MessageBoxButton.OK, MessageBoxImage.Information);
+                    
+                    // Vider les champs après connexion réussie
+                    Nom = "";
+                    MotDePasse = "";
                 }
                 else
                 {
-                    MessageBox.Show($"Erreur HTTP: {response.StatusCode}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                    string errorMessage = await response.Content.ReadAsStringAsync();
+                    MessageBox.Show($"Erreur de connexion : {errorMessage}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erreur: {ex.Message}", "Exception", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Erreur de connexion avec l'API : {ex.Message}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propName = null) =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
+    }
+
+    // Classe RelayCommand pour ICommand
+    public class RelayCommand : ICommand
+    {
+        private readonly Func<Task> _executeAsync;
+        private readonly Func<bool> _canExecute;
+
+        public RelayCommand(Func<Task> executeAsync, Func<bool> canExecute = null)
+        {
+            _executeAsync = executeAsync ?? throw new ArgumentNullException(nameof(executeAsync));
+            _canExecute = canExecute;
+        }
+
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
+
+        public bool CanExecute(object parameter) => _canExecute?.Invoke() ?? true;
+
+        public async void Execute(object parameter) => await _executeAsync();
+    }
+
+    // Classe Utilisateur si elle n'existe pas ailleurs
+    public class Utilisateur
+    {
+        public string nom { get; set; }
+        public string motDePasse { get; set; }
     }
 }

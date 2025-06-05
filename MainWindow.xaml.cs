@@ -32,5 +32,11 @@ namespace WpfApp1
             BanListeWindow banListeWindow = new BanListeWindow();
             banListeWindow.Show();
         }
+                private void Connexion_Click(object sender, RoutedEventArgs e)
+        {
+            ConnexionWindow connexionWindow = new ConnexionWindow();
+            connexionWindow.Show();
+        }
+
     }
 }
